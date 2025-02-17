@@ -1,0 +1,36 @@
+sudo apt update
+sudo apt install git -y
+sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+echo "$(dpkg --print-architecture)"
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+sudo apt update
+sudo rm /etc/apt/keyrings/docker.asc 
+sudo rm /etc/apt/sources.list.d/docker.list
+sudo apt update
+sudo apt install docker.io docker-compose
+sudo groupadd docker
+sudo usermod -aG docker $USER
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
+sudo apt install nginx -y
+sudo systemctl start nginx
+sudo systemctl enable nginx
+sudo systemctl status nginx
+vi .bash_history 
+sudo apt install certbot python3-certbot-nginx
+curl -4 icanhazip.com
+sudo certbot certonly --manual --preferred-challenges=dns --server https://acme-v02.api.letsencrypt.org/directory --agree-tos -d *.agentsinc.ai
+sudo vi /etc/nginx/sites-available/agentsinc.ai
+sudo ln -s /etc/nginx/sites-available/agentsinc.ai /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx
+sudo systemctl status certbot.timer
+sudo mkdir /etc/nginx/credentials
+sudo apt install apache2-utils
+sudo htpasswd -c /etc/nginx/credentials/.htpasswd samir
+sudo systemctl restart nginx
+sudo apt install tmux
+tmux new -s app
+less /var/log/nginx/access.log 
+less /var/log/nginx/error.log 
+vi .bash_history 
