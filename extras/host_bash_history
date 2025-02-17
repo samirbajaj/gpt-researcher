@@ -16,7 +16,6 @@ sudo apt install nginx -y
 sudo systemctl start nginx
 sudo systemctl enable nginx
 sudo systemctl status nginx
-vi .bash_history 
 sudo apt install certbot python3-certbot-nginx
 curl -4 icanhazip.com
 sudo certbot certonly --manual --preferred-challenges=dns --server https://acme-v02.api.letsencrypt.org/directory --agree-tos -d *.agentsinc.ai
@@ -33,4 +32,5 @@ sudo apt install tmux
 tmux new -s app
 less /var/log/nginx/access.log 
 less /var/log/nginx/error.log 
-vi .bash_history 
+tmux attach -t app
+netstat -plant
