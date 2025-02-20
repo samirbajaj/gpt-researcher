@@ -31,7 +31,7 @@ unstructured
 json_repair
 json5
 loguru
-
+azure-storage-blob
 # uncomment for testing
 # pytest
 # pytest-asyncio
